@@ -1,11 +1,6 @@
 class Constants:
     MAIN_URL = 'https://qa-scooter.praktikum-services.ru'
 
-    ENDPOINT_COURIER_CREATE = '/api/v1/courier'
-    ENDPOINT_COURIER_LOGIN = '/api/v1/courier/login'
-    ENDPOINT_ORDERS_CREATE_GET_LIST = '/api/v1/orders'
-    ENDPOINT_ORDER_CANCEL = '/api/v1/orders/cancel'
-
     RESPONSE_SUCCESS = {'ok': True}
     ERROR_MESSAGE_CREATE_WITHOUT_REQUIRED_FIELD = 'Недостаточно данных для создания учетной записи'
     ERROR_MESSAGE_FOR_EXIST_LOGIN = 'Этот логин уже используется'

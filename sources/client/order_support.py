@@ -3,7 +3,7 @@ import requests
 import json
 
 from sources.client.constants import Constants
-from sources.client.order_routes import OrderAPIRoutes
+from sources.client.urls import OrderAPIRoutes
 
 
 @allure.step('Формирование тела запроса')
@@ -23,7 +23,7 @@ def get_body_request_order(order_lst):
     return payload
 
 
-@allure.step('Отмена заказа')
+@allure.step('Отмена созданного заказа')
 def cancel_order(payload):
     url = OrderAPIRoutes()
     response = requests.post(url=url.get_post_api_order_route(), data=payload)
@@ -32,6 +32,16 @@ def cancel_order(payload):
         payload = {
             'track': order_track
         }
-        requests.put(url=f'{Constants.MAIN_URL}{Constants.ENDPOINT_ORDER_CANCEL}', data=payload)
-    else:
-        print('Заказ отсутствует')
+        requests.put(url=f'{Constants.MAIN_URL}{OrderAPIRoutes.ENDPOINT_ORDER_CANCEL}', data=payload)
+
+
+@allure.step('Получение ответа на GET-запрос')
+def get_response_get_order(get_url):
+    response = requests.get(get_url)
+    return response
+
+
+@allure.step('Получение ответа на POST-запрос')
+def get_response_post_order(get_url, payload):
+    response = requests.post(get_url, payload)
+    return response
